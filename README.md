@@ -1,70 +1,63 @@
-# Getting Started with Create React App
+# Institutional Web Application
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is an institutional web application built using React, SCSS, Node.js, and MongoDB. It provides functionality for both students and staff members.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- Student Features:
+  - Pay ASOGOV dues
+  - Create course forms per school semester
+  - Update profile information
+  - Upload school receipt for approval
+  - Print exam permit for approved receipts
+  - View seat number for examinations
 
-### `npm start`
+- Staff Features (Bursar or Registrar):
+  - Update profile information
+  - Manage application settings
+  - Approve student receipts categorized by department
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologies Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- React: A JavaScript library for building user interfaces.
+- SCSS: A CSS preprocessor that extends the capabilities of CSS.
+- Node.js: A JavaScript runtime environment for server-side development.
+- MongoDB: A NoSQL database for storing application data.
 
-### `npm test`
+## Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository:
 
-### `npm run build`
+   ```shell
+   git clone [<repository-url>](https://github.com/logboi1/webapp/)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Navigate to the project directory:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```shell
+   cd webapp
+3. Install dependencies:
+   ```shell
+   yarn install
+   
+4. Set up environment variables:
+- Create a `.env` file in the root directory.
+- Specify the required environment variables in the `.env` file, such as database connection details, secret keys, etc.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Usage
+1. Start the development server:
+2. The application will be accessible at `http://localhost:3000` in your browser.
 
-### `npm run eject`
+## Folder Structure
+The project follows a specific folder structure to organize the codebase:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- `backend`: Contains server-side code using Node.js and Express.
+- `frontend`: Contains client-side code using React and SCSS.
+- `public`: Contains static files that will be served by the server.
+- `src`: Contains the source code for both the server and client.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Contributing
+Contributions are welcome! If you find any issues or have suggestions for improvements, please submit an issue or a pull request.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## License
+This project is licensed under the [MIT License](LICENSE).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
