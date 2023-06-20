@@ -24,16 +24,16 @@ const LoginPage = ({ onLogin }) => {
     e.preventDefault();
     let credentials = {
       email: email,
-      phonenumber: password,
+      phoneNumber: password,
     };
     try {
       LoadingToast("Logging you in..");
-      const { message } = await userApi.login(credentials);
-      console.log(message); // Handle the response data
+      const response = await userApi.login(credentials);
+      console.log(response);
       toast.dismiss(); // Dismiss the loading toast
-      SuccessToast(message);
+      SuccessToast("Login Successful");
       onLogin(); // Set the authentication state
-      navigate("/dashboard"); // Redirect to the dashboard
+      navigate("/dashboard", { state: { student: response } }); // Redirect to the dashboard
     } catch (error) {
       console.log(error.toString()); // Handle the error
       toast.dismiss(); // Dismiss the loading toast

@@ -13,6 +13,7 @@ router.post("/register", async (req, res) => {
       department,
       level,
       othername,
+      matricNo,
     } = req.body;
     const user = new User({
       email,
@@ -22,6 +23,7 @@ router.post("/register", async (req, res) => {
       department,
       level,
       othername,
+      matricNo,
     });
     await user.save();
     res.json({ message: "Registration successful" });

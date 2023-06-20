@@ -1,11 +1,14 @@
 // Variables
 $sidebarWidth: 250px;
 $contentPadding: 20px;
+$primaryColor: #990066;
+$white: #fff;
+$secondaryColor:#EA8B22;
 
 // Mixin for sidebar styles
 @mixin sidebar {
     width: $sidebarWidth;
-    background-color: #f2f2f2;
+    background-color:$primaryColor;
     padding: $contentPadding;
     position: fixed;
     top: 0;
@@ -17,6 +20,7 @@ $contentPadding: 20px;
 @mixin content {
     margin-left: $sidebarWidth;
     padding: $contentPadding;
+    width: 100%;
 }
 
 // Dashboard container
@@ -43,13 +47,17 @@ $contentPadding: 20px;
             padding: 10px;
             margin-bottom: .3em;
             transition: background-color 0.3s;
+            color: $white;
 
             &:hover {
-                background-color: #e0e0e0;
+                background-color: $white;
+                color: $primaryColor;
             }
 
             &.active {
-                background-color: #c0c0c0;
+                background-color:$white;
+                color: $primaryColor;
+                border-radius: 8px;
             }
 
            
@@ -66,3 +74,15 @@ $contentPadding: 20px;
 .content {
     @include content;
 }
+
+ .topBar {
+     background: $primaryColor;
+     height: 3em;
+     margin-bottom: 2em;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 1em;
+     color: $white;
+     width: 100%;
+ }

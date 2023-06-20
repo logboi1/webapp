@@ -1,5 +1,7 @@
 const express = require("express");
+const studentRoutes = require("./route/studentRoutes");
 const cors = require("cors");
+const routes = require("./route/routes");
 
 const app = express();
 
@@ -7,7 +9,7 @@ const app = express();
 app.use(
   cors({
     origin: "http://localhost:3000", // Replace with the actual origin URL of your React app
-    methods: ["GET", "POST"],
+    methods: ["GET", "POST", "PUT"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
@@ -18,10 +20,10 @@ const port = 5000;
 app.use(express.json());
 
 // Define routes
-app.use("/api", require("./route/userRoutes"));
+app.use("/api", routes);
 
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/institute", {
+mongoose.connect("mongodb://127.0.0.1:27017/institute", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

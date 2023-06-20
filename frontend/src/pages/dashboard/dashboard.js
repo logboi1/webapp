@@ -1,27 +1,50 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.scss";
 import StudentDetailsScreen from "../../components/studentDetails";
+import { useLocation } from "react-router-dom";
+import ProfileUpdate from "../../components/profileUpdate";
+import CourseFormScreen from "../../components/courseform";
 
 const Dashboard = ({ onLogout }) => {
   const [selectedOption, setSelectedOption] = useState("studentDetails");
+  const location = useLocation();
+  const { student } = location.state;
 
   const handleOptionClick = (option) => {
     setSelectedOption(option);
   };
 
+  const handleProfileUpdate = () => {
+    setSelectedOption("updateProfile");
+  };
+
+  const handleAllCourseForm = () => {
+    setSelectedOption("allCourseForm");
+  };
+
   const handleLogout = () => {
-    // Perform any necessary logout actions
-    // For example, clear authentication token or user session
-    // Then redirect to the login page
     onLogout();
   };
+
+  useEffect(() => {}, []);
 
   const renderContent = () => {
     switch (selectedOption) {
       case "studentDetails":
-        return <StudentDetailsScreen />;
+        return (
+          <StudentDetailsScreen
+            studentDetail={student}
+            profileUpdate={handleProfileUpdate}
+          />
+        );
+      case "updateProfile":
+        return <ProfileUpdate data={student} />;
       case "courseForm":
-        return <CourseFormScreen />;
+        return (
+          <CourseFormScreen data={student} viewCourses={handleAllCourseForm} />
+        );
+      case "allCourseForm":
+        return <MyCourseScreen />;
       case "uploadReceipt":
         return <UploadReceiptScreen />;
       case "printPermit":
@@ -41,7 +64,7 @@ const Dashboard = ({ onLogout }) => {
           <li
             className={selectedOption === "studentDetails" ? "active" : ""}
             onClick={() => handleOptionClick("studentDetails")}>
-            Student Details
+            Dashboard
           </li>
           <li
             className={selectedOption === "courseForm" ? "active" : ""}
@@ -68,13 +91,21 @@ const Dashboard = ({ onLogout }) => {
           </li>
         </ul>
       </div>
-      <div className="content">{renderContent()}</div>
+      <div className="content">
+        <div className="topBar">
+          <h3>Welcome Back</h3>
+          <h3>
+            {student.surname} {student.otherName}
+          </h3>
+        </div>
+        {renderContent()}
+      </div>
     </div>
   );
 };
 
-const CourseFormScreen = () => {
-  return <div>Course Form Screen</div>;
+const MyCourseScreen = () => {
+  return <div>CoursesForm Screen</div>;
 };
 
 const UploadReceiptScreen = () => {

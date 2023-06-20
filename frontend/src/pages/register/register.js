@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import "./style.scss";
 import { Link } from "react-router-dom";
 import userApi from "../../API/userApi";
+import LoadingToast from "../../components/toast/loadingToast";
+import { toast } from "react-toastify";
+import ErrorToast from "../../components/toast/errortoast";
+import SuccessToast from "../../components/toast/successtoast";
 
 const departments = ["Department A", "Department B", "Department C"]; // Replace with your department options
 const levels = ["Level 1", "Level 2", "Level 3"]; // Replace with your level options
@@ -48,18 +52,22 @@ const RegistrationPage = () => {
     let formData = {
       email: email,
       surname: surname,
-      phonenumber: phone,
+      phoneNumber: phone,
       gender: gender,
       department: department,
       level: level,
-      othername: othername,
+      otherName: othername,
     };
 
     try {
-      const response = await userApi.register(formData);
-      console.log(response); // Handle the response data
+      const { message } = await userApi.register(formData);
+      console.log(message); // Handle the response data
+      toast.dismiss(); // Dismiss the loading toast
+      SuccessToast(message);
     } catch (error) {
       console.error(error); // Handle the error
+      toast.dismiss(); // Dismiss the loading toast
+      ErrorToast(error.toString());
     }
   };
 
