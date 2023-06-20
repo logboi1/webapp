@@ -4,10 +4,12 @@ import StudentDetailsScreen from "../../components/studentDetails";
 import { useLocation } from "react-router-dom";
 import ProfileUpdate from "../../components/profileUpdate";
 import CourseFormScreen from "../../components/courseform";
+import { useNavigate } from "react-router-dom";
 
 const Dashboard = ({ onLogout }) => {
   const [selectedOption, setSelectedOption] = useState("studentDetails");
   const location = useLocation();
+  const navigate = useNavigate();
   const { student } = location.state;
 
   const handleOptionClick = (option) => {

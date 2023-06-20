@@ -79,17 +79,12 @@ const loginStudent = async (req, res) => {
       return res.status(404).json({ error: "Invalid email or phone number" });
     }
 
-    console.log("Student found:", student);
-
     // Check if both email and phone number belong to the same user
     const isCredentialsMatched =
       student.email === email && student.phoneNumber === phoneNumber;
     if (!isCredentialsMatched) {
-      console.log("Invalid credentials:", email, phoneNumber);
       return res.status(401).json({ error: "Invalid credentials" });
     }
-
-    console.log("Credentials matched:", email, phoneNumber);
 
     // Generate a JSON Web Token (JWT) for authentication
     const token = jwt.sign({ studentId: student._id }, config.jwtSecret, {

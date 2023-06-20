@@ -5,16 +5,19 @@ import RegistrationPage from "./pages/register/register";
 import Dashboard from "./pages/dashboard/dashboard";
 import { useState } from "react";
 import ProtectedRoute from "./utils/PrivateRoute ";
+import useStore from "./store";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const isLoggedIn = useStore((state) => state.isLoggedIn);
+  const setLoginStatus = useStore((state) => state.setLoginStatus);
 
   const handleLogin = () => {
-    setIsAuthenticated(true);
+    setLoginStatus(true);
   };
 
   const handleLogout = () => {
-    setIsAuthenticated(false);
+    setLoginStatus(false);
   };
 
   return (
@@ -23,7 +26,7 @@ function App() {
         <Route index element={<LoginPage onLogin={handleLogin} />} />
         <Route path="/login" element={<LoginPage onLogin={handleLogin} />} />
         <Route path="/register" element={<RegistrationPage />} />
-        <Route element={<ProtectedRoute isAutenticate={isAuthenticated} />}>
+        <Route element={<ProtectedRoute isAutenticate={isLoggedIn} />}>
           <Route
             path="dashboard"
             element={<Dashboard onLogout={handleLogout} />}

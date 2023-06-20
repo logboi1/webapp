@@ -54,8 +54,26 @@ const getCourseFormsByStudent = async (req, res) => {
   }
 };
 
+// Controller function to get course forms for a student and a specific semester
+const getCoursesBySemester = async (req, res) => {
+  try {
+    const { studentId, semester } = req.params;
+
+    // Find the course forms for the specified student ID and semester
+    const courseForms = await Course.find({ userId: studentId, semester });
+
+    res.json(courseForms);
+  } catch (error) {
+    console.error("Error getting course forms:", error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while getting the course forms" });
+  }
+};
+
 // Export the controller functions
 module.exports = {
   saveCourseForm,
   getCourseFormsByStudent,
+  getCoursesBySemester,
 };

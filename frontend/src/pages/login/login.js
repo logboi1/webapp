@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.scss";
 import userApi from "../../API/userApi";
 import { useNavigate } from "react-router-dom";
@@ -6,11 +6,13 @@ import SuccessToast from "../../components/toast/successtoast";
 import ErrorToast from "../../components/toast/errortoast";
 import LoadingToast from "../../components/toast/loadingToast";
 import { toast } from "react-toastify";
+import useStore from "../../store";
 
 const LoginPage = ({ onLogin }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const setLoginStatus = useStore((state) => state.setLoginStatus);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -40,6 +42,10 @@ const LoginPage = ({ onLogin }) => {
       ErrorToast(error.toString());
     }
   };
+
+  useEffect(() => {
+    setLoginStatus(false);
+  }, []);
 
   return (
     <div className="login-page">
