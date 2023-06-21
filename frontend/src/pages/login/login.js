@@ -13,6 +13,7 @@ const LoginPage = ({ onLogin }) => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   const setLoginStatus = useStore((state) => state.setLoginStatus);
+  const setUserProfile = useStore((state) => state.setUserProfile);
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -31,7 +32,8 @@ const LoginPage = ({ onLogin }) => {
     try {
       LoadingToast("Logging you in..");
       const response = await userApi.login(credentials);
-      console.log(response);
+      // set user return data
+      setUserProfile(response);
       toast.dismiss(); // Dismiss the loading toast
       SuccessToast("Login Successful");
       onLogin(); // Set the authentication state

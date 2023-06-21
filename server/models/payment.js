@@ -6,15 +6,28 @@ const paymentSchema = new mongoose.Schema({
     ref: "Student",
     required: true,
   },
+  referencId: {
+    type: String,
+    required: true,
+  },
   amount: {
     type: Number,
   },
+  section: {
+    type: String,
+  },
+  semester: {
+    type: String,
+  },
+  level: {
+    type: String,
+  },
   date: {
-    type: Number,
+    type: String,
   },
   status: {
     type: String,
-    enum: ["pending", "paid"],
+    enum: ["pending", "Approved"],
     default: "pending",
   },
   // Other payment fields
