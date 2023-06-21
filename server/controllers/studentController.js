@@ -18,6 +18,7 @@ const registerStudent = async (req, res) => {
       schoolName,
       otherName,
       gender,
+      section,
     } = req.body;
 
     // Check if the email or phone number already exists in the database
@@ -44,6 +45,7 @@ const registerStudent = async (req, res) => {
       schoolName,
       otherName,
       gender,
+      section,
     });
 
     // Save the student to the database
@@ -117,6 +119,7 @@ const updateStudentProfile = async (req, res) => {
       schoolName,
       otherName,
       gender,
+      section,
     } = req.body;
 
     // Find the student in the database based on their ID
@@ -138,6 +141,7 @@ const updateStudentProfile = async (req, res) => {
     student.schoolName = schoolName;
     student.otherName = otherName;
     student.gender = gender;
+    student.section = section;
 
     // Save the updated student data to the database
     await student.save();

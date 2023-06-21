@@ -5,6 +5,8 @@ import { useLocation } from "react-router-dom";
 import ProfileUpdate from "../../components/profileUpdate";
 import CourseFormScreen from "../../components/courseform";
 import { useNavigate } from "react-router-dom";
+import MyCourseScreen from "../../components/courseComponent/myCourseScreen";
+import PaymentPage from "../../components/payment";
 
 const Dashboard = ({ onLogout }) => {
   const [selectedOption, setSelectedOption] = useState("studentDetails");
@@ -52,7 +54,7 @@ const Dashboard = ({ onLogout }) => {
       case "printPermit":
         return <PrintPermitScreen />;
       case "payFee":
-        return <PayFeeScreen />;
+        return <PaymentPage />;
       default:
         return null;
     }
@@ -106,20 +108,12 @@ const Dashboard = ({ onLogout }) => {
   );
 };
 
-const MyCourseScreen = () => {
-  return <div>CoursesForm Screen</div>;
-};
-
 const UploadReceiptScreen = () => {
   return <div>Upload Receipt Screen</div>;
 };
 
 const PrintPermitScreen = () => {
   return <div>Print Permit Screen</div>;
-};
-
-const PayFeeScreen = () => {
-  return <div>Pay Fee Screen</div>;
 };
 
 export default Dashboard;

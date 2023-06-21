@@ -61,6 +61,10 @@ const CourseFormScreen = ({ data, viewCourses }) => {
     setSelectedCourses([...selectedCourses, course]);
   };
 
+  const handleRemoveLastCourse = () => {
+    setSelectedCourses(selectedCourses.slice(0, selectedCourses.length - 1));
+  };
+
   // Function to handle section selection
   const handleSectionSelection = (section) => {
     setSelectedSection(section);
@@ -143,7 +147,7 @@ const CourseFormScreen = ({ data, viewCourses }) => {
               <td>{course.courseTitle}</td>
               <td>{course.unit}</td>
               <td>
-                <button>Delete</button>
+                <button onClick={handleRemoveLastCourse}>Delete</button>
               </td>
             </tr>
           ))}

@@ -4,7 +4,8 @@ const Payment = require("../models/payment");
 const makePayment = async (req, res) => {
   try {
     // Extract student ID, amount, and date from the request body
-    const { userId, amount, date, status } = req.body;
+    const { userId, referencId, amount, date, status, section, level } =
+      req.body;
 
     // Create a new payment instance
     const payment = new Payment({
@@ -12,6 +13,9 @@ const makePayment = async (req, res) => {
       amount,
       date,
       status,
+      section,
+      level,
+      referencId,
     });
 
     // Save the payment to the database
@@ -43,8 +47,31 @@ const getPaymentsByStudent = async (req, res) => {
   }
 };
 
+const getPaymentByLevel = async (req, res) => {
+  try {
+    const { userId, level } = req.body;
+
+    // Find the payment for the specified user ID and level
+    const payment = await Payment.findOne({ userId, level });
+
+    if (payment) {
+      // Payment found, return success response
+      res.json({ message: "Payment found", payment });
+    } else {
+      // Payment not found, return error response
+      res.status(404).json({ error: "Payment not found" });
+    }
+  } catch (error) {
+    console.error("Error getting payment:", error);
+    res
+      .status(500)
+      .json({ error: "An error occurred while getting the payment" });
+  }
+};
+
 // Export the controller functions
 module.exports = {
   makePayment,
   getPaymentsByStudent,
+  getPaymentByLevel,
 };
