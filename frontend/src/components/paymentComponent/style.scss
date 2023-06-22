@@ -1,0 +1,86 @@
+.receipt {
+    margin: 20px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    width: 80%;
+
+    .receipt-header {
+        text-align: center;
+        margin-bottom: 20px;
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 14px;
+        }
+    }
+
+    .receipt-body {
+        margin-bottom: 20px;
+
+        h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+
+            th,
+            td {
+                padding: 10px;
+                border-bottom: 1px solid #ccc;
+                text-align: left;
+            }
+
+            th {
+                font-weight: bold;
+            }
+
+            td {
+                font-size: 14px;
+            }
+
+            tbody tr:last-child td {
+                border-bottom: none;
+            }
+
+            tfoot {
+                font-weight: bold;
+
+                td {
+                    padding-top: 10px;
+                    border-top: 1px solid #ccc;
+                }
+            }
+        }
+    }
+
+    .receipt-footer {
+        text-align: right;
+
+        .print-button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+
+            &:hover {
+                background-color: #45a049;
+            }
+        }
+    }
+}
+

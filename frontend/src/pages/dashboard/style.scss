@@ -1,0 +1,88 @@
+// Variables
+$sidebarWidth: 250px;
+$contentPadding: 20px;
+$primaryColor: #990066;
+$white: #fff;
+$secondaryColor:#EA8B22;
+
+// Mixin for sidebar styles
+@mixin sidebar {
+    width: $sidebarWidth;
+    background-color:$primaryColor;
+    padding: $contentPadding;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+}
+
+// Mixin for content styles
+@mixin content {
+    margin-left: $sidebarWidth;
+    padding: $contentPadding;
+    width: 100%;
+}
+
+// Dashboard container
+.dashboard-container {
+    display: flex;
+}
+
+// Sidebar styles
+.sidebar {
+    @include sidebar;
+
+    img {
+            margin: 2em 0;
+        }
+
+    .sidebar-menu {
+        list-style-type: none;
+        padding: 0;
+
+      
+
+        li {
+            cursor: pointer;
+            padding: 10px;
+            margin-bottom: .3em;
+            transition: background-color 0.3s;
+            color: $white;
+
+            &:hover {
+                background-color: $white;
+                color: $primaryColor;
+            }
+
+            &.active {
+                background-color:$white;
+                color: $primaryColor;
+                border-radius: 8px;
+            }
+
+           
+        }
+
+                 .logout {
+                     margin-top: 10em;
+                     font-weight: 700
+                 }
+    }
+}
+
+// Content styles
+.content {
+    @include content;
+}
+
+ .topBar {
+     background: $primaryColor;
+     height: 3em;
+     margin-bottom: 2em;
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     padding: 1em;
+     color: $white;
+     width: 100%;
+ }
